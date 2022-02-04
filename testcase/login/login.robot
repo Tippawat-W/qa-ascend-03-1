@@ -5,7 +5,7 @@ Resource            ../../keyword/website/feature/keyword_login.robot
 Variables           ../../resource/testdata/test_data.yaml
 Resource            ../../keyword/website/page/login_page.robot
 Resource            ../../keyword/website/page/susccess_login_page.robot
-Suite Setup         Open wesite
+Suite Setup         Open website
 Suite Teardown      Close browser
 
 *** Test Case ***
