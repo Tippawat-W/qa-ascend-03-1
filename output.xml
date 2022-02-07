@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1.2 (Python 3.9.1 on win32)" generated="20220207 17:34:15.300" rpa="false" schemaversion="2">
+<suite id="s1" name="Login" source="C:\Users\007\PycharmProjects\test-qa-ascend-03-1\testcase\login\login.robot">
+<kw name="Open website" library="open_website" type="SETUP">
+<doc>Open website and check welcome page show</doc>
+<kw name="Open Browser" library="Selenium2Library">
+<arg>${base_url.herokuapp}</arg>
+<arg>${browser.chrome}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220207 17:34:15.630" level="INFO">Opening browser 'chrome' to base url 'http://the-internet.herokuapp.com/login'.</msg>
+<status status="PASS" starttime="20220207 17:34:15.626" endtime="20220207 17:34:31.977"/>
+</kw>
+<kw name="Title Should Be" library="Selenium2Library">
+<arg>The Internet</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20220207 17:34:32.009" level="INFO">Page title is 'The Internet'.</msg>
+<status status="PASS" starttime="20220207 17:34:31.978" endtime="20220207 17:34:32.009"/>
+</kw>
+<status status="PASS" starttime="20220207 17:34:15.626" endtime="20220207 17:34:32.009"/>
+</kw>
+<test id="s1-t1" name="Scenario: Login Success">
+<kw name="Given User go to login with" library="keyword_login">
+<arg>${username.success}</arg>
+<arg>${password.success}</arg>
+<doc>Check text box status enable and input text on field</doc>
+<kw name="Input username" library="login_page">
+<arg>${username}</arg>
+<doc>Check text box status enable and input username on field</doc>
+<kw name="Element Should Be Enabled" library="Selenium2Library">
+<arg>${text_username}</arg>
+<doc>Verifies that element identified by ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20220207 17:34:32.011" endtime="20220207 17:34:32.072"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>${text_username}</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220207 17:34:32.072" level="INFO">Typing text 'tomsmith' into text field 'name=username'.</msg>
+<status status="PASS" starttime="20220207 17:34:32.072" endtime="20220207 17:34:32.155"/>
+</kw>
+<status status="PASS" starttime="20220207 17:34:32.011" endtime="20220207 17:34:32.156"/>
+</kw>
+<kw name="Input password" library="login_page">
+<arg>${password}</arg>
+<doc>Check text box status enable and input password on field</doc>
+<kw name="Element Should Be Enabled" library="Selenium2Library">
+<arg>${text_password}</arg>
+<doc>Verifies that element identified by ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20220207 17:34:32.156" endtime="20220207 17:34:32.188"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>${text_password}</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220207 17:34:32.188" level="INFO">Typing text 'SuperSecretPassword!' into text field 'name=password'.</msg>
+<status status="PASS" starttime="20220207 17:34:32.188" endtime="20220207 17:34:32.271"/>
+</kw>
+<status status="PASS" starttime="20220207 17:34:32.156" endtime="20220207 17:34:32.271"/>
+</kw>
+<status status="PASS" starttime="20220207 17:34:32.010" endtime="20220207 17:34:32.271"/>
+</kw>
+<kw name="When Click submit for login" library="login_page">
+<doc>Click button for login</doc>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${button_login}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220207 17:34:32.273" level="INFO">Clicking element '//*[@id="login"]/button'.</msg>
+<status status="PASS" starttime="20220207 17:34:32.272" endtime="20220207 17:34:32.990"/>
+</kw>
+<status status="PASS" starttime="20220207 17:34:32.272" endtime="20220207 17:34:32.990"/>
+</kw>
+<kw name="Then Header should see result success page" library="susccess_login_page">
+<doc>Check header login success</doc>
+<kw name="Element Text Should Be" library="Selenium2Library">
+<arg>${header}</arg>
+<arg>You logged into a secure area!\n×</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20220207 17:34:32.991" level="INFO">Verifying element '//*[@id="flash"]' contains exact text 'You logged into a secure area!
+×'.</msg>
+<status status="PASS" starttime="20220207 17:34:32.991" endtime="20220207 17:34:33.018"/>
+</kw>
+<status status="PASS" starttime="20220207 17:34:32.991" endtime="20220207 17:34:33.018"/>
+</kw>
+<kw name="And Click button for logout" library="susccess_login_page">
+<doc>Click button for logout</doc>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${button_logout}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220207 17:34:33.018" level="INFO">Clicking element 'xpath://html/body/div[2]/div/div/a/i'.</msg>
+<status status="PASS" starttime="20220207 17:34:33.018" endtime="20220207 17:34:33.693"/>
+</kw>
+<status status="PASS" starttime="20220207 17:34:33.018" endtime="20220207 17:34:33.693"/>
+</kw>
+<kw name="And Header should see result logout page" library="login_page">
+<doc>Check header logout success</doc>
+<kw name="Element Text Should Be" library="Selenium2Library">
+<arg>${Header}</arg>
+<arg>You logged out of the secure area!\n×</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20220207 17:34:33.695" level="INFO">Verifying element '//*[@id="flash"]' contains exact text 'You logged out of the secure area!
+×'.</msg>
+<status status="PASS" starttime="20220207 17:34:33.694" endtime="20220207 17:34:33.717"/>
+</kw>
+<status status="PASS" starttime="20220207 17:34:33.694" endtime="20220207 17:34:33.718"/>
+</kw>
+<doc>Check Login and Welcome page</doc>
+<status status="PASS" starttime="20220207 17:34:32.009" endtime="20220207 17:34:33.719"/>
+</test>
+<test id="s1-t2" name="Scenario: Login Fail Password Incorrect">
+<kw name="Given User go to login with" library="keyword_login">
+<arg>${username.success}</arg>
+<arg>${password.invalid}</arg>
+<doc>Check text box status enable and input text on field</doc>
+<kw name="Input username" library="login_page">
+<arg>${username}</arg>
+<doc>Check text box status enable and input username on field</doc>
+<kw name="Element Should Be Enabled" library="Selenium2Library">
+<arg>${text_username}</arg>
+<doc>Verifies that element identified by ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20220207 17:34:33.722" endtime="20220207 17:34:33.746"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>${text_username}</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220207 17:34:33.746" level="INFO">Typing text 'tomsmith' into text field 'name=username'.</msg>
+<status status="PASS" starttime="20220207 17:34:33.746" endtime="20220207 17:34:33.821"/>
+</kw>
+<status status="PASS" starttime="20220207 17:34:33.721" endtime="20220207 17:34:33.821"/>
+</kw>
+<kw name="Input password" library="login_page">
+<arg>${password}</arg>
+<doc>Check text box status enable and input password on field</doc>
+<kw name="Element Should Be Enabled" library="Selenium2Library">
+<arg>${text_password}</arg>
+<doc>Verifies that element identified by ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20220207 17:34:33.821" endtime="20220207 17:34:33.844"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>${text_password}</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220207 17:34:33.844" level="INFO">Typing text 'Password!' into text field 'name=password'.</msg>
+<status status="PASS" starttime="20220207 17:34:33.844" endtime="20220207 17:34:33.922"/>
+</kw>
+<status status="PASS" starttime="20220207 17:34:33.821" endtime="20220207 17:34:33.922"/>
+</kw>
+<status status="PASS" starttime="20220207 17:34:33.720" endtime="20220207 17:34:33.922"/>
+</kw>
+<kw name="When Click submit for login" library="login_page">
+<doc>Click button for login</doc>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${button_login}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220207 17:34:33.923" level="INFO">Clicking element '//*[@id="login"]/button'.</msg>
+<status status="PASS" starttime="20220207 17:34:33.923" endtime="20220207 17:34:35.201"/>
+</kw>
+<status status="PASS" starttime="20220207 17:34:33.923" endtime="20220207 17:34:35.202"/>
+</kw>
+<kw name="Then Header should see result error page when using password invaild" library="login_page">
+<doc>Check header login failed</doc>
+<kw name="Element Text Should Be" library="Selenium2Library">
+<arg>${Header}</arg>
+<arg>Your password is invalid!\n×</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20220207 17:34:35.203" level="INFO">Verifying element '//*[@id="flash"]' contains exact text 'Your password is invalid!
+×'.</msg>
+<status status="PASS" starttime="20220207 17:34:35.202" endtime="20220207 17:34:35.222"/>
+</kw>
+<status status="PASS" starttime="20220207 17:34:35.202" endtime="20220207 17:34:35.222"/>
+</kw>
+<doc>Check Login and Header Login Fail by Password Incorrect</doc>
+<status status="PASS" starttime="20220207 17:34:33.720" endtime="20220207 17:34:35.223"/>
+</test>
+<test id="s1-t3" name="Scenario: Login Fail Username Incorrect">
+<kw name="Given User go to login with" library="keyword_login">
+<arg>${username.invalid}</arg>
+<arg>${password.invalid}</arg>
+<doc>Check text box status enable and input text on field</doc>
+<kw name="Input username" library="login_page">
+<arg>${username}</arg>
+<doc>Check text box status enable and input username on field</doc>
+<kw name="Element Should Be Enabled" library="Selenium2Library">
+<arg>${text_username}</arg>
+<doc>Verifies that element identified by ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20220207 17:34:35.226" endtime="20220207 17:34:35.249"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>${text_username}</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220207 17:34:35.250" level="INFO">Typing text 'SuperSecretPassword!' into text field 'name=username'.</msg>
+<status status="PASS" starttime="20220207 17:34:35.249" endtime="20220207 17:34:35.327"/>
+</kw>
+<status status="PASS" starttime="20220207 17:34:35.225" endtime="20220207 17:34:35.327"/>
+</kw>
+<kw name="Input password" library="login_page">
+<arg>${password}</arg>
+<doc>Check text box status enable and input password on field</doc>
+<kw name="Element Should Be Enabled" library="Selenium2Library">
+<arg>${text_password}</arg>
+<doc>Verifies that element identified by ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20220207 17:34:35.328" endtime="20220207 17:34:35.350"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>${text_password}</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220207 17:34:35.351" level="INFO">Typing text 'Password!' into text field 'name=password'.</msg>
+<status status="PASS" starttime="20220207 17:34:35.350" endtime="20220207 17:34:35.417"/>
+</kw>
+<status status="PASS" starttime="20220207 17:34:35.327" endtime="20220207 17:34:35.417"/>
+</kw>
+<status status="PASS" starttime="20220207 17:34:35.224" endtime="20220207 17:34:35.417"/>
+</kw>
+<kw name="When Click submit for login" library="login_page">
+<doc>Click button for login</doc>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${button_login}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220207 17:34:35.418" level="INFO">Clicking element '//*[@id="login"]/button'.</msg>
+<status status="PASS" starttime="20220207 17:34:35.418" endtime="20220207 17:34:36.101"/>
+</kw>
+<status status="PASS" starttime="20220207 17:34:35.418" endtime="20220207 17:34:36.101"/>
+</kw>
+<kw name="Then Header should see result error page when using username invaild" library="login_page">
+<doc>Check header login failed</doc>
+<kw name="Element Text Should Be" library="Selenium2Library">
+<arg>${Header}</arg>
+<arg>Your username is invalid!\n×</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20220207 17:34:36.102" level="INFO">Verifying element '//*[@id="flash"]' contains exact text 'Your username is invalid!
+×'.</msg>
+<status status="PASS" starttime="20220207 17:34:36.102" endtime="20220207 17:34:36.123"/>
+</kw>
+<status status="PASS" starttime="20220207 17:34:36.102" endtime="20220207 17:34:36.123"/>
+</kw>
+<doc>Check Login and Header Login Fail by Username Incorrect</doc>
+<status status="PASS" starttime="20220207 17:34:35.224" endtime="20220207 17:34:36.124"/>
+</test>
+<kw name="Close Browser" library="Selenium2Library" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220207 17:34:36.124" endtime="20220207 17:34:38.288"/>
+</kw>
+<status status="PASS" starttime="20220207 17:34:15.300" endtime="20220207 17:34:38.288"/>
+</suite>
+<statistics>
+<total>
+<stat pass="3" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="3" fail="0" skip="0" id="s1" name="Login">Login</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
